@@ -1,1 +1,1 @@
-{ "maintenance": true, "maintenanceMessage": "Le serveur est en maintenance, reviens bientôt !", "banner": "Redémarrage du serveur ce soir à 20h !" }
+{ "maintenance": false, "maintenanceMessage": "Le serveur est en maintenance, reviens bientôt !", "banner": "" }
