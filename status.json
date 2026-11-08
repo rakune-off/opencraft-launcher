@@ -1,1 +1,1 @@
-{ "maintenance": false, "maintenanceMessage": "Le serveur est en maintenance, reviens bientôt !", "banner": "", "event": null }
+{ "maintenance": false, "maintenanceMessage": "Le serveur est en maintenance, reviens bientôt !", "banner": "Événement test : viens découvrir la nouveauté !", "event": { "name": "Événement test OpenCraft", "date": "2026-11-14T18:00:00+01:00" } }
