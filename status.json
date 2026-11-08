@@ -1,1 +1,1 @@
-{ "maintenance": false, "maintenanceMessage": "Le serveur est en maintenance, reviens bientôt !", "banner": "" }
+{ "maintenance": false, "maintenanceMessage": "Le serveur est en maintenance, reviens bientôt !", "banner": "", "event": { "name": "Événement test", "date": "2026-11-12T18:00:00+01:00" } }
