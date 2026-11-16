@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Télécharger OpenCraft Launcher</title>
+<style>
+  :root { --bg: #0d0d1f; --card: rgba(255,255,255,.08); --line: rgba(255,255,255,.2); --a1: #ffd75a; --a2: #f0861c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 30% 0%, #26264d, var(--bg) 60%); color: #fff;
+    font-family: 'Segoe UI', system-ui, sans-serif; display: flex; justify-content: center; padding: 40px 16px; }
+  main { width: 100%; max-width: 640px; }
+  h1 { font-size: 34px; margin: 0 0 8px; text-align: center; }
+  .sub { text-align: center; opacity: .8; margin: 0 0 28px; }
+  .btn { display: block; text-align: center; padding: 18px 24px; border-radius: 40px; font-size: 20px; font-weight: 800; letter-spacing: 1px;
+    color: #5a1f00; text-decoration: none; background: linear-gradient(to bottom, var(--a1), var(--a2));
+    box-shadow: 0 0 26px rgba(255,190,60,.55), 0 6px 14px rgba(0,0,0,.4); transition: transform .15s; }
+  .btn:hover { transform: translateY(-2px) scale(1.02); }
+  .ver { text-align: center; font-size: 13px; opacity: .7; margin: 10px 0 30px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px; margin-bottom: 16px; }
+  .card h2 { margin: 0 0 12px; font-size: 18px; }
+  .card p { margin: 0 0 10px; line-height: 1.55; font-size: 15px; opacity: .92; }
+  ol { margin: 0; padding-left: 22px; line-height: 1.7; font-size: 15px; }
+  li b { color: var(--a1); }
+  .or { text-align: center; opacity: .6; margin: 10px 0; font-size: 13px; }
+  .small { font-size: 13px; opacity: .75; }
+  a { color: var(--a1); }
+</style>
+</head>
+<body>
+<main>
+  <h1>OpenCraft Launcher</h1>
+  <p class="sub">Installe Minecraft, les mods et rejoins le serveur en un clic.</p>
+
+  <a id="dl" class="btn" href="https://github.com/rakune-off/opencraft-launcher/releases/latest">⬇ Télécharger pour Windows</a>
+  <div class="ver" id="ver">Dernière version</div>
+
+  <div class="card">
+    <h2>⚠️ Windows affiche un écran bleu ?</h2>
+    <p>C'est normal : le launcher n'est pas encore signé numériquement, donc Windows demande une confirmation la première fois. Il y a deux façons de continuer :</p>
+    <ol>
+      <li><b>Méthode 1 :</b> clic droit sur le fichier téléchargé, <b>Propriétés</b>, coche <b>Débloquer</b> en bas de la fenêtre, <b>OK</b>, puis lance le fichier.</li>
+    </ol>
+    <div class="or">— ou —</div>
+    <ol>
+      <li><b>Méthode 2 :</b> lance le fichier, clique sur <b>Informations complémentaires</b>, puis sur <b>Exécuter quand même</b>.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Et ensuite ?</h2>
+    <p>Cet écran n'apparaît qu'<b>une seule fois</b>, à la première installation. Les mises à jour se font ensuite toutes seules, avec le bouton <b>METTRE À JOUR</b> du launcher.</p>
+    <p class="small">Tu préfères une installation sans aucun avertissement ? Le launcher est aussi disponible sur le <a href="https://apps.microsoft.com/detail/9N91F7K2B6N4">Microsoft Store</a>.</p>
+  </div>
+</main>
+
+<script>
+  // Le bouton pointe toujours vers la dernière version publiée sur GitHub
+  fetch('https://api.github.com/repos/rakune-off/opencraft-launcher/releases/latest')
+    .then((r) => r.json())
+    .then((rel) => {
+      const asset = (rel.assets || []).find((a) => /^OpenCraft-Launcher-Setup-.*\.exe$/.test(a.name));
+      if (asset) {
+        document.getElementById('dl').href = asset.browser_download_url;
+        document.getElementById('ver').textContent = 'Version ' + (rel.tag_name || '') + ' · ' + Math.round(asset.size / 1048576) + ' Mo';
+      }
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
